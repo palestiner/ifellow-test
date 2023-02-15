@@ -6,13 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            String in = scanner.nextLine().replaceAll("[^()]", "");
-            while (in.startsWith(")")) {
-                in = in.substring(1);
-            }
-            while (in.endsWith("(")) {
-                in = in.substring(0, in.length() - 1);
-            }
+            String in = scanner.nextLine().replaceAll("^\\)*|[^()]|\\(*$", "");
             List<String> brackets = Arrays.stream(in.split("")).toList();
             List<Pair> pairs = new ArrayList<>();
             for (int i = 0; i < brackets.size(); i++) {
